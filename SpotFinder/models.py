@@ -18,3 +18,17 @@ class Rua(models.Model):
              return f"{self.numVagas}"
 
 
+class Pessoa (models.Model):
+    nome=models.CharField(max_length=120),
+    telefone=models.IntegerField(max_length=11),
+    email=models.CharField(max_length=100)
+    def _iter_(self):
+        return f"{self.nome}-{self.telefone}-{self.email}"
+
+        
+class Vaga (models.Model):
+    localizacao=models.CharField(max_length=100),
+    id=models.CharField(max_length=30),
+    tamanho=models.CharField(max_length=10),
+    def _iter_(self):
+        return f"{self.localizacao}-{self.id}-{self.tamanho}"
