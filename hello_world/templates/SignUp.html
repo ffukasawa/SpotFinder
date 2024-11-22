@@ -1,0 +1,39 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>SpotFinder Sign Up</title>
+  <link rel="stylesheet" href = "{% static "signin.css"%}">
+</head>
+<body>
+  <div class="principal">
+    <div class="fechar">✖</div>
+    <div class="signup">
+      <div class="logo">
+        <img src="{% static "logo.jpg"%}">
+      </div>
+      <h2>Sign Up</h2>
+      <form action="#">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" placeholder="Nome">
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Email">
+
+        <label for="telefone">Telefone:</label>
+        <input type="tel" id="telefone" name="telefone" placeholder="Telefone">
+
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha" name="senha" placeholder="Senha">
+
+        <label for="confirmar">Confirmar senha:</label>
+        <input type="password" id="confirmar" name="confirmar" placeholder="Confirmar senha">
+
+        <button type="submit" class="criaracc">Criar conta</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

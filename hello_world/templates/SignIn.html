@@ -1,0 +1,43 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>SpotFinder Login</title>
+  <link rel="stylesheet" href= "{% static "signin.css"%}">
+</head>
+<body>
+  <div class="principal">
+    <div class="fechar">✖</div>
+    <div class="login">
+      <div class="logo">
+        <img src= "{% static "logo.jpg"%}">
+      </div>
+      <h2>Entrar na conta</h2>
+      <form action="#">
+        <label for="login">Login</label>
+        <input type="text" id="login" name="login" placeholder="Login">
+
+        <label for="senha">Senha</label>
+        <input type="password" id="senha" name="senha" placeholder="Senha">
+
+        <div class="manterlog">
+          <input type="checkbox" id="manterlog" name="manterlog">
+          <label for="manter">Manter logado</label>
+        </div>
+
+        <button type="submit" class="signin">Sign In</button>
+      </form>
+
+      <div class="OR">
+        <span>OR</span>
+      </div>
+
+      <div class="criar">
+        <p>Primeira vez no site?</p>
+        <button class="criaracc"><a href = "cadastro/">Criar conta</a></button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

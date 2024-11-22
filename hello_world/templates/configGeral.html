@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SpotFinder - Configurações</title>
+  <link rel="stylesheet" href="telaconfiguracaogeral.css"> 
+</head>
+<body>
+  <div class="header">
+    <div class="logo">
+      <img src="https://s3-alpha-sig.figma.com/img/9d0d/9c6d/5489896d4dcf0ed6a62a8546414b1633?Expires=1733097600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=bCVMK16tJM1CVKSFLSD0b5ODPWNkjfy48gU663o9wVy6rzKOCVXKsWCm1aCxBGCPHjfCnojLAAdZi1f-~BUXcqXvHUc8uUfDdZZTAgxYOQEtVFMYfD3~NQVQVscj7xavLRsiKdk7q~0F3~Kl4Vlw9pAWoq-3dUlIm5SMUx37VZt-MQMJ7u9~JlTaNYNH2O6mCO76sKRlb6aFWNdAXBaYWS6Zsi4uDoreezT5TH9djQ3bpU7E2p6C5o2loB-u1EL7GZT-pDbvlH0aGADi-yVLqG65JUHNOfSXyhp5tCaS3GaWxUAzWiNWWpTDZ664cCg-C-Y1cydMWp0m2RVyukQX8A__" class="logo-img">
+    </div>
+  </div>
+  <div class="config-container">
+    <h2>Configurações</h2>
+    <div class="toggle-container config-item">
+      <span>Ativar Notificações</span>
+      <div class="toggle-switch"></div>
+    </div>
+    <div class="config-item">Alterar Idioma</div>
+    <div class="config-item">Reportar Bugs</div>
+    <div class="config-item">Suporte ao Usuário</div>
+    <div class="config-item">Sair da conta</div>
+  </div>
+
+  <script>
+    const toggleSwitch = document.querySelector('.toggle-switch');
+    toggleSwitch.addEventListener('click', () => {
+      toggleSwitch.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>

@@ -47,5 +47,3 @@ class Estacionamento(models.Model):
     hora = models.TimeField()
     data = models.DateField()
 
-    def __str__(self):
-        return f"Carro: {self.carro}, Vaga: {self.vaga}, Data: {self.data}, Hora: {self.hora}"
