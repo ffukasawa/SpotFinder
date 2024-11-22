@@ -1,15 +1,17 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <title>SpotFinder Login</title>
-  <link rel="stylesheet" href="signin.css">
+  <link rel="stylesheet" href= "{% static "signin.css"%}">
 </head>
 <body>
   <div class="principal">
     <div class="fechar">✖</div>
     <div class="login">
       <div class="logo">
-        <img src="logo (1).jpg" alt="SpotFinder Logo">
+        <img src= "{% static "logo.jpg"%}">
       </div>
       <h2>Entrar na conta</h2>
       <form action="#">
@@ -33,7 +35,7 @@
 
       <div class="criar">
         <p>Primeira vez no site?</p>
-        <button class="criaracc">Criar conta</button>
+        <button class="criaracc"><a href = "cadastro/">Criar conta</a></button>
       </div>
     </div>
   </div>

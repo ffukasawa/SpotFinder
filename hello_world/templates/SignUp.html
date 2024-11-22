@@ -1,15 +1,18 @@
+{% load static %}
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <title>SpotFinder Sign Up</title>
-  <link rel="stylesheet" href="signup.css">
+  <link rel="stylesheet" href = "{% static "signin.css"%}">
 </head>
 <body>
   <div class="principal">
     <div class="fechar">✖</div>
     <div class="signup">
       <div class="logo">
-        <img src="logo (1).jpg" alt="SpotFinder Logo">
+        <img src="{% static "logo.jpg"%}">
       </div>
       <h2>Sign Up</h2>
       <form action="#">
