@@ -49,12 +49,12 @@ def pag_inicial(request):
 """def pag_inicial_prelogin(request):
     if request.method=='POST':
         if 'Login' in request.POST:
-            return redirect ('pagina_signin.html')
+            return redirect ('SignIn.html')
         elif 'Sign up' in request.POST:
-            return redirect ('pagina_signup.html')
+            return redirect ('SignUp.html')
         elif 'Continue without logging in' in request.POST:
-            return redirect('pagina_inicial.html')
-    return render(request,'pagina_prelogin.html')
+            return redirect('pgInicial.html')
+    return render(request,'preLogin.html')
 
 def pag_signin(request):
     if request.method=='POST':
@@ -63,10 +63,10 @@ def pag_signin(request):
         user= authenticate(request,login=login,password=password)
         if user is not None:
             login(request,user)
-            return redirect('pagina_inicial.html')
+            return redirect('pgInicial.html')
         else:
             messages.error(request,'Usuário o senha inválidos.')
-    return render(request,'pagina_signin.html')
+    return render(request,'SignIn.html')
 
 def pag_signup(request):
     if request.method=='POST':
@@ -77,12 +77,11 @@ def pag_signup(request):
         confirmpassword=request.POST['confirmpassword']
         if(password != confirmpassword):
             messages.error(request,'As senhas não coincidem.')
-            return redirect('pagina_signup.html')
+            return redirect('SignUp.html')
         user=User.objects.create_user(username=fullname,email=email,password=password)
         login(request,user)
-        return redirect('pagina_inicial.html')
-    return render(request,'pagina_signup.html')
-
+        return redirect('pgInicial.html')
+    return render(request,'SignUp.html')
 
 def pag_busca(request):
     if request.method=='POST':
@@ -104,7 +103,7 @@ def pag_ajustes(request):
         elif 'Suporte ao usuário' in request.POST:
             return 
         elif 'Sair da conta' in request.POST:
-            return redirect ('pagina_prelogin.html')
+            return redirect ('preLogin.html')
     return render(request,'pagina_ajustes')
 
 def pag_historico(request):
@@ -120,7 +119,7 @@ def pag_perfil(request):
         profile.medidasdoveiculo=medidasdoveiculo
         profile.save()
         messages.success(request,'Seu perfil foi atualizado.')
-        return redirect('pagina_inicial.html') 
+        return redirect('pgInicial.html') 
     return render(request,'pagina_perfil.html')
 
 def pag_filtros(request):
