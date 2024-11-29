@@ -24,8 +24,6 @@ def login_view(request):
         form = PessoaLoginForm()
     return render(request, 'SignIn.html', {'form': form})
 
-    
-
 def cadastro(request):
     if request.method == 'POST':
         form = PessoaCreationForm(request.POST)
@@ -45,6 +43,53 @@ def logout_view(request):
 @login_required
 def pag_inicial(request):
     return render(request,'pgInicial.html')
+
+def pag_busca(request):
+    if request.method=='POST':
+        if 'Aonde você quer parar?' in request.POST:
+            return 
+    return render(request,'pagina_busca')
+
+def pag_menu(request):
+    return render(request,'pagina_menu')
+
+def pag_ajustes(request):
+    if request.method=='POST':
+        if 'Ativar Notificações' in request.POST:
+            return 
+        elif 'Alterar idioma' in request.POST:
+            return 
+        elif 'Reportar bugs' in request.POST:
+            return 
+        elif 'Suporte ao usuário' in request.POST:
+            return 
+        elif 'Sair da conta' in request.POST:
+            return redirect ('preLogin.html')
+    return render(request,'configGeral.html')
+
+def pag_historico(request):
+    return render(request,'pagina_historico')
+
+def pag_perfil(request):
+    profile=request.user.profile
+    if request.method=='POST':
+        telefone=request.POST['telefone']
+        medidasdoveiculo=request.POST['medidasdoveiculo']
+        profile.telefone=telefone
+        profile.medidasdoveiculo=medidasdoveiculo
+        profile.save()
+        messages.success(request,'Seu perfil foi atualizado.')
+        return redirect('pgInicial.html') 
+    return render(request,'configUsuario.html')
+
+def pag_filtros(request):
+    return render (request,'pagina_filtros.html')
+
+def pag_favoritos(request):
+    return render(request,'pagina_favoritos.html')
+
+def pag_espdisp(request):
+    return render (request,'pagina_espdisp.html')
 
 """def pag_inicial_prelogin(request):
     if request.method=='POST':
@@ -82,54 +127,4 @@ def pag_signup(request):
         login(request,user)
         return redirect('pgInicial.html')
     return render(request,'SignUp.html')
-
-def pag_busca(request):
-    if request.method=='POST':
-        if 'Aonde você quer parar?' in request.POST:
-            return 
-    return render(request,'pagina_busca')
-
-def pag_menu(request):
-    return render(request,'pagina_menu')
-
-def pag_ajustes(request):
-    if request.method=='POST':
-        if 'Ativar Notificações' in request.POST:
-            return 
-        elif 'Alterar idioma' in request.POST:
-            return 
-        elif 'Reportar bugs' in request.POST:
-            return 
-        elif 'Suporte ao usuário' in request.POST:
-            return 
-        elif 'Sair da conta' in request.POST:
-            return redirect ('preLogin.html')
-    return render(request,'pagina_ajustes')
-
-def pag_historico(request):
-
-    return render(request,'pagina_historico')
-
-def pag_perfil(request):
-    profile=request.user.profile
-    if request.method=='POST':
-        telefone=request.POST['telefone']
-        medidasdoveiculo=request.POST['medidasdoveiculo']
-        profile.telefone=telefone
-        profile.medidasdoveiculo=medidasdoveiculo
-        profile.save()
-        messages.success(request,'Seu perfil foi atualizado.')
-        return redirect('pgInicial.html') 
-    return render(request,'pagina_perfil.html')
-
-def pag_filtros(request):
-    return render (request,'pagina_filtros.html')
-
-def pag_favoritos(request):
-    return render(request,'pagina_favoritos.html')
-
-def pag_espdisp(request):
-    return render (request,'pagina_espdisp.html')
 """
-
-
