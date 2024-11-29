@@ -1,12 +1,14 @@
 from django.db import models
+from django.contrib.auth.models import User
+
 
 class Pessoa(models.Model):
-    nome = models.CharField(max_length=100)
-    telefone = models.IntegerField(max_length=11),
-    email = models.EmailField(blank=True, null=True)
 
-    def __str__(self):
-        return self.nome
+    usuario = models.OneToOneField(User, on_delete=models.CASCADE)
+    email = models.EmailField()
+    cpf = models.CharField(max_length=11)
+    datadenascimento = models.DateField()
+    nome = models.CharField(max_length=100)
 
 
 class Carro(models.Model):
