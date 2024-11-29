@@ -1,18 +1,52 @@
 from django.shortcuts import render,redirect
-from django.contrib.auth import authenticate,login
+from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.models import User
 from django.contrib import messages
-from .models import Profile
+from .models import Pessoa
+from .forms import PessoaCreationForm,PessoaLoginForm
+from django.contrib.auth.decorators import login_required
+
 def home(request):
     return render(request, 'index.html')
 
-def login(request):
-    return(render(request,"SignIn.html"))
+def login_view(request):
+    if request.method == 'POST':
+        form = PessoaLoginForm(data=request.POST)
+        if form.is_valid():
+            user = authenticate(
+                username=form.cleaned_data['username'],
+                password=form.cleaned_data['password']
+            )
+            if user is not None:
+                login(request, user)  # login importado de django.contrib.auth
+                return redirect('home')
+    else:
+        form = PessoaLoginForm()
+    return render(request, 'SignIn.html', {'form': form})
+
+    
 
 def cadastro(request):
-    return(render(request,"SignUp.html"))
+    if request.method == 'POST':
+        form = PessoaCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()  # Salva o usuário no banco
+            login(request, user)  # Realiza o login automático
+            return redirect('home')  # Redireciona para a página inicial
+    else:
+        form = PessoaCreationForm()  # Cria o formulário vazio para GET
 
-def pag_inicial_prelogin(request):
+    return render(request, 'SignUp.html', {'form': form})
+
+@login_required    
+def logout_view(request):
+    logout(request)  # Chama o logout do Django corretamente
+    return redirect('login') 
+@login_required
+def pag_inicial(request):
+    return render(request,'pgInicial.html')
+
+"""def pag_inicial_prelogin(request):
     if request.method=='POST':
         if 'Login' in request.POST:
             return redirect ('pagina_signin.html')
@@ -49,8 +83,6 @@ def pag_signup(request):
         return redirect('pagina_inicial.html')
     return render(request,'pagina_signup.html')
 
-def pag_inicial(request):
-    return render(request,'pagina_inicial')
 
 def pag_busca(request):
     if request.method=='POST':
@@ -99,6 +131,6 @@ def pag_favoritos(request):
 
 def pag_espdisp(request):
     return render (request,'pagina_espdisp.html')
-
+"""
 
 
