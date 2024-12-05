@@ -38,6 +38,11 @@ urlpatterns = [
     path('filtros/',views.pag_filtros),
     path('favoritos/',views.pag_favoritos),
     path('espacosdisponiveis',views.pag_espdisp),
+   path('espacosdisponiveis2/',views.pag_espdisp2),
+   path('espacosdisponiveis3/',views.pag_espdisp3),
+   path('caracteristicasvagas/',views.caracteristicas_vagas),
+   path('caracteristicasvagas2/',views.caracteristicas_vagas2),
+   path('filtros_espdisp/',views.filtros_espdisp),
 
 ]
 if settings.DEBUG:
