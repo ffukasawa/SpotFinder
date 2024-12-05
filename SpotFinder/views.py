@@ -91,6 +91,67 @@ def pag_favoritos(request):
 def pag_espdisp(request):
     return render (request,'pagina_espdisp.html')
 
+def pag_filtros(request):
+    filter_options = {
+        "sizes": ["4,5m x 2,2m", "5m x 2,5m", "5,5m x 2,5m"],
+        "covered": True,
+        "prices": ["R$15,00", "R$15,00 - R$30,00", "Acima de R$30,00"],
+    }
+    return render (request,'pagina_filtros.html')
+
+def pag_favoritos(request):
+    favorites = [
+        {"name": "Casa", "distance": "1.2 km"},
+        {"name": "Trabalho", "distance": "0.8 km"},
+        {"name": "Casa Mãe", "distance": "2.5 km"},
+    ] 
+    return render(request,'pagina_favoritos.html')
+
+def pag_espdisp(request):
+    return render (request,'pagina_espdisp.html')
+
+def pag_espdisp2(request):
+    return render (request,'pagina_espdisp2.html')
+
+def pag_espdisp3(request):
+    return render (request,'pagina_espdisp3.html')
+
+def caracteristicas_vagas(request):
+    locations = {
+        1: {
+            "name": "Rua General Urquiza",
+            "slots": "30 vagas",
+            "ratings": "★★★★☆",
+            "security": "Alta",
+            "size": "2 x 35 m",
+        },
+        2: {
+            "name": "Av. Ataulfo de Paiva",
+            "slots": "50 vagas",
+            "ratings": "★★★☆☆",
+            "security": "Média",
+            "size": "5 x 20 m",
+        },
+    }
+    location = locations.get(vaga_id, None)
+
+    if not location:
+        return render(request, "error.html", {"message": "Local não encontrado."})
+    return render(request,'caractvagas.html')
+
+def caracteristicas_vagas2(request):
+    
+    return render(request,'caractvagas2.html')
+
+def filtros_espdisp(request):
+    filter_options = {
+        "sizes": ["4,5m x 2,2m", "5m x 2,5m", "5,5m x 2,5m"],
+        "covered": True,
+        "prices": ["R$15,00", "R$15,00 - R$30,00", "Acima de R$30,00"],
+    }
+    return render(request,'filtros_espdisp.html')
+
+
 """def pag_inicial_prelogin(request):
     if request.method=='POST':
         if 'Login' in request.POST:
